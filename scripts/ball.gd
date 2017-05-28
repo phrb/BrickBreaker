@@ -1,7 +1,7 @@
 extends RigidBody2D
 
-const speedup   = 400
-const max_speed = 30000
+export var speedup = 160
+const max_speed    = 1600
 
 func _ready():
 	set_fixed_process(true)
@@ -15,7 +15,7 @@ func _fixed_process(delta):
 		elif body.get_name() == "Paddle":
 			var speed     = get_linear_velocity().length()
 			var direction = get_pos() - body.get_node("Kickback").get_global_pos()
-			var velocity  = direction.normalized() * min(speed + speedup * delta, max_speed * delta)
+			var velocity  = direction.normalized() * min(speed + speedup, max_speed)
 			set_linear_velocity(velocity)
 			
 	if get_pos().y > get_viewport_rect().end.y:
