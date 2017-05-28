@@ -1,5 +1,8 @@
 extends RigidBody2D
 
+export var points_on_hit   = 25
+export var points_on_death = -75
+
 export var speedup = 160
 const max_speed    = 1600
 
@@ -11,6 +14,7 @@ func _fixed_process(delta):
 	
 	for body in colliding_bodies:
 		if body.is_in_group("Bricks"):
+			get_node("/root/World").score += points_on_hit
 			body.queue_free()
 		elif body.get_name() == "Paddle":
 			var speed     = get_linear_velocity().length()
@@ -19,4 +23,5 @@ func _fixed_process(delta):
 			set_linear_velocity(velocity)
 			
 	if get_pos().y > get_viewport_rect().end.y:
+		get_node("/root/World").score += points_on_death
 		queue_free()
