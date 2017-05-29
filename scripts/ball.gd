@@ -1,10 +1,11 @@
 extends RigidBody2D
 
-export var points_on_hit   = 25
-export var points_on_death = -75
+# TODO: Get rid of magic numbers
+export var points_on_hit   = 250
+export var points_on_death = -750
 
-export var speedup = 160
-const max_speed    = 1600
+export var speedup   = 60
+export var max_speed = 1500
 
 func _ready():
 	set_fixed_process(true)
