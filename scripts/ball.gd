@@ -25,5 +25,6 @@ func _fixed_process(delta):
 			
 	if get_pos().y > get_viewport_rect().end.y:
 		get_node("/root/World").score += points_on_death
+		get_node("/root/World").update_high_score()
 		queue_free()
 		get_tree().reload_current_scene()
