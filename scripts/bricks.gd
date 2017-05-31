@@ -2,7 +2,6 @@ extends Node2D
 
 const simple_brick_scene         = preload("res://scenes/brick.xml")
 
-#TODO: Get rid of magic numbers:
 export var simple_brick_children = 130
 
 var starting_x = 76
