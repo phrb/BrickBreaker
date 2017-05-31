@@ -2,7 +2,7 @@ extends Node2D
 
 var score = 0 setget set_score
 var high_score = 0
-var high_score_path = "user://high_score"
+var high_score_path = "user://high_score.save"
 var data = {"high_score": 0}
 var save_game = File.new()
 
