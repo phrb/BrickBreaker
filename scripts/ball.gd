@@ -1,8 +1,6 @@
 extends RigidBody2D
 
-# TODO: Get rid of magic numbers
 export var points_on_hit   = 250
-export var points_on_death = -750
 
 export var speedup   = 60
 export var max_speed = 1500
@@ -24,5 +22,6 @@ func _fixed_process(delta):
 			set_linear_velocity(velocity)
 			
 	if get_pos().y > get_viewport_rect().end.y:
-		get_node("/root/World").score += points_on_death
+		get_node("/root/World").update_high_score()
 		queue_free()
+		get_tree().reload_current_scene()
