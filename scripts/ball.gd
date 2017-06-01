@@ -2,7 +2,7 @@ extends RigidBody2D
 
 export var points_on_hit   = 250
 
-export var speedup   = 60
+export var speedup   = 5
 export var max_speed = 1500
 
 func _ready():
