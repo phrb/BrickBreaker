@@ -5,6 +5,8 @@ export var points_on_hit   = 250
 export var speedup   = 5
 export var max_speed = 1500
 
+const game_over_scene = preload("res://scenes/game_over.xml")
+
 func _ready():
 	set_fixed_process(true)
 
@@ -24,4 +26,5 @@ func _fixed_process(delta):
 	if get_pos().y > get_viewport_rect().end.y:
 		get_node("/root/World").update_high_score()
 		queue_free()
-		get_tree().reload_current_scene()
+		var game_over_node = game_over_scene.instance()
+		get_node("..").add_child(game_over_node)
