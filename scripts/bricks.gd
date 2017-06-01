@@ -21,39 +21,39 @@ var core_start = 12
 var core_size  = 1
 
 var easy_level = { 'fringe_1': 0.0,
-		           'shell_1':  0.1,
-				   'body_1':   0.9,
-				   'core':     1.0,
-				   'body_2':   0.3,
-				   'shell_2':  0.1,
-				   'fringe_2': 0.01 }
+                   'shell_1':  0.1,
+                   'body_1':   0.9,
+                   'core':     1.0,
+                   'body_2':   0.3,
+                   'shell_2':  0.1,
+                   'fringe_2': 0.01 }
 
 var medium_level = { 'fringe_1': 0.05,
-					 'shell_1':  0.7,
-					 'body_1':   0.9,
-					 'core':     0.3,
-					 'body_2':   0.9,
-					 'shell_2':  0.7,
-					 'fringe_2': 0.05 }
+                     'shell_1':  0.7,
+                     'body_1':   0.9,
+                     'core':     0.3,
+                     'body_2':   0.9,
+                     'shell_2':  0.7,
+                     'fringe_2': 0.05 }
 
 var hard_level = { 'fringe_1': 0.12,
-				   'shell_1':  1.0,
-				   'body_1':   0.5,
-				   'core':     1.0,
-				   'body_2':   0.7,
-				   'shell_2':  1.0,
-				   'fringe_2': 0.5 }
+                   'shell_1':  1.0,
+                   'body_1':   0.5,
+                   'core':     1.0,
+                   'body_2':   0.7,
+                   'shell_2':  1.0,
+                   'fringe_2': 0.5 }
 
 var levels = [easy_level, medium_level, hard_level]
 var level = randi() % levels.size()
 
 var probabilities = [[fringe_1_start, fringe_1_start + fringe_size, levels[level]['fringe_1']],
-					 [shell_1_start,  shell_1_start + shell_size,   levels[level]['shell_1']],
-					 [body_1_start,   body_1_start + body_size,     levels[level]['body_1']],
-					 [core_start,     core_start + core_size,       levels[level]['core']],
-					 [body_2_start,   body_2_start + body_size,     levels[level]['body_2']],
-					 [shell_2_start,  shell_2_start + shell_size,   levels[level]['shell_2']],
-					 [fringe_2_start, brick_matrix_x - 1,           levels[level]['fringe_2']]]
+                     [shell_1_start,  shell_1_start + shell_size,   levels[level]['shell_1']],
+                     [body_1_start,   body_1_start + body_size,     levels[level]['body_1']],
+                     [core_start,     core_start + core_size,       levels[level]['core']],
+                     [body_2_start,   body_2_start + body_size,     levels[level]['body_2']],
+                     [shell_2_start,  shell_2_start + shell_size,   levels[level]['shell_2']],
+                     [fringe_2_start, brick_matrix_x - 1,           levels[level]['fringe_2']]]
 
 var starting_x = 76
 var starting_y = 128
