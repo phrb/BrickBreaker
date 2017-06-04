@@ -4,6 +4,7 @@ const ball_scene = preload("res://scenes/ball.xml")
 var ball_presence = false
 var game_over = false
 
+
 func _ready():
 	set_fixed_process(true)
 	set_process_input(true)
