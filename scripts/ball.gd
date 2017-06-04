@@ -1,11 +1,9 @@
 extends RigidBody2D
 
 export var points_on_hit   = 250
-
 export var speedup   = 5
 export var max_speed = 2000
-
-const PUP_TELE_ACC = 1000
+const powerup_telecontrol_acceleration = 2000
 
 const game_over_scene = preload("res://scenes/game_over.xml")
 
@@ -18,7 +16,7 @@ func _fixed_process(delta):
 	for body in colliding_bodies:
 		if body.is_in_group("Bricks"):
 			get_node("/root/World").score += points_on_hit
-			body.collapse_and_maybe_drop_power_up()
+			body.queue_free_with_powerup()
 
 		elif body.get_name() == "Paddle":
 			var speed     = get_linear_velocity().length()
@@ -32,13 +30,13 @@ func _fixed_process(delta):
 		var velocity_y = velocity_vec.y
 		
 		# Calculating the acceleration multiplier
-		var ball_x_pos = get_pos().x
-		var paddle_x_pos = get_node("/root/World/Paddle").get_pos().x
-		var screen_x_size = get_viewport().get_rect().size.x
-		var acc_multiplier = (paddle_x_pos - ball_x_pos) / screen_x_size
+		var ball_pos_x = get_pos().x
+		var paddle_pos_x = get_node("/root/World/Paddle").get_pos().x
+		var screen_size_x = get_viewport().get_rect().size.x
+		var acceleration_multiplier = (paddle_pos_x - ball_pos_x) / screen_size_x
 		
 		# Calculating the acceleration
-		var acceleration = PUP_TELE_ACC * acc_multiplier
+		var acceleration = powerup_telecontrol_acceleration * acceleration_multiplier
 		var velocity = Vector2(velocity_x + acceleration * delta, velocity_y)
 		set_linear_velocity(velocity)
 									
