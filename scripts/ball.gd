@@ -3,6 +3,7 @@ extends RigidBody2D
 export var points_on_hit   = 250
 export var speedup   = 5
 export var max_speed = 2000
+
 const powerup_telecontrol_acceleration = 2000
 
 const game_over_scene = preload("res://scenes/game_over.xml")
@@ -39,7 +40,7 @@ func _fixed_process(delta):
 		var acceleration = powerup_telecontrol_acceleration * acceleration_multiplier
 		var velocity = Vector2(velocity_x + acceleration * delta, velocity_y)
 		set_linear_velocity(velocity)
-									
+		
 	if get_pos().y > get_viewport_rect().end.y:
 		get_node("/root/World").update_high_score()
 		queue_free()
