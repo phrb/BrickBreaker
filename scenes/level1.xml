@@ -119,7 +119,7 @@
 				<real> 32 </real>
 				<real> 128 </real>
 				<string> "Score: 0" </string>
-				<vector2> 448, 1050 </vector2>
+				<vector2> 480.435, 1030.62 </vector2>
 				<vector2> 0.3, 0.3 </vector2>
 				<bool> False </bool>
 				<resource  resource_type="Shape2D" path="local://1">  </resource>

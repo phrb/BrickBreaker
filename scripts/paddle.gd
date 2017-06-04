@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 const ball_scene = preload("res://scenes/ball.xml")
 var ball_presence = false
+var game_over = false
 
 
 func _ready():
@@ -9,6 +10,7 @@ func _ready():
 	set_process_input(true)
 	
 func _fixed_process(delta):
+	if game_over: return
 	var y = get_pos().y
 	var mouse_x = get_viewport().get_mouse_pos().x
 	set_pos(Vector2(mouse_x, y))
