@@ -6,9 +6,21 @@ var high_score_path = "user://high_score.save"
 var data = {"high_score": 0}
 var save_game = File.new()
 
+var power_up_time_left_dict = {}
+
 func _ready():
 	load_high_score()
 	update_high_score_label()
+	set_process(true)
+	
+func _process(delta):
+	for power_up in power_up_time_left_dict.keys():
+		var time_left = power_up_time_left_dict[power_up] - delta
+		if (time_left < 0):
+			power_up_time_left_dict.erase(power_up)
+			print("Power-up: %s was deactivated." % power_up)
+		else:
+			power_up_time_left_dict[power_up] = time_left
 
 func update_high_score_label():
 	get_node("HighScore").set_text("High Score: " + str(high_score))
