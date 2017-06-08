@@ -17,7 +17,7 @@ func _fixed_process(delta):
 	for body in colliding_bodies:
 		if body.is_in_group("Bricks"):
 			get_node("/root/World").score += points_on_hit
-			body.queue_free_with_powerup()
+			body.hit_brick()
 
 		elif body.get_name() == "Paddle":
 			var speed     = get_linear_velocity().length()

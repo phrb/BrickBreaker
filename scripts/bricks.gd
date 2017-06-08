@@ -26,7 +26,8 @@ var easy_level = { 'fringe_1': 0.0,
                    'core':     1.0,
                    'body_2':   0.3,
                    'shell_2':  0.1,
-                   'fringe_2': 0.01 }
+                   'fringe_2': 0.01,
+                   'brick_ps': [0.10, 0.20] }
 
 var medium_level = { 'fringe_1': 0.05,
                      'shell_1':  0.7,
@@ -34,7 +35,8 @@ var medium_level = { 'fringe_1': 0.05,
                      'core':     0.3,
                      'body_2':   0.9,
                      'shell_2':  0.7,
-                     'fringe_2': 0.05 }
+                     'fringe_2': 0.05,
+                     'brick_ps': [0.2, 0.4] }
 
 var hard_level = { 'fringe_1': 0.12,
                    'shell_1':  1.0,
@@ -42,7 +44,8 @@ var hard_level = { 'fringe_1': 0.12,
                    'core':     1.0,
                    'body_2':   0.7,
                    'shell_2':  1.0,
-                   'fringe_2': 0.5 }
+                   'fringe_2': 0.5,
+                   'brick_ps': [0.4, 0.8] }
 
 var levels = [easy_level, medium_level, hard_level]
 var level = randi() % levels.size()
@@ -83,8 +86,10 @@ func _ready():
 				brick_matrix[x][y] = 1
 				
 				var simple_brick_node = simple_brick_scene.instance()
+				simple_brick_node.set_prob(levels[level]['brick_ps'])
 				simple_brick_node.set_pos(child_pos)
 				simple_brick_node.add_to_group("Bricks")
+				
 				get_node(".").add_child(simple_brick_node)
 			else:
 				brick_matrix[x][y] = 0
