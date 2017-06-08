@@ -1,12 +1,14 @@
 extends RigidBody2D
 
 export var points_on_hit   = 250
+export var points_for_winner = 500
 export var speedup   = 5
 export var max_speed = 2000
 
 const powerup_telecontrol_acceleration = 2000
 
 const game_over_scene = preload("res://scenes/game_over.xml")
+const winner_scene = preload("res://scenes/winner.xml")
 
 func _ready():
 	set_fixed_process(true)
@@ -18,6 +20,12 @@ func _fixed_process(delta):
 		if body.is_in_group("Bricks"):
 			get_node("/root/World").score += points_on_hit
 			body.hit_brick()
+			if get_tree().get_nodes_in_group("Bricks").size() == 1:
+				get_node("/root/World").score += points_for_winner
+				get_node("/root/World").update_high_score()
+				queue_free()
+				var winner_node = winner_scene.instance()
+				get_node("..").add_child(winner_node)
 
 		elif body.get_name() == "Paddle":
 			var speed     = get_linear_velocity().length()
