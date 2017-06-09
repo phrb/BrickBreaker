@@ -6,7 +6,16 @@ var high_score_path = "user://high_score.save"
 var data = {"high_score": 0}
 var save_game = File.new()
 
-var power_up_time_left_dict = {}
+var active_powerups = {} setget update_active_powerups, get_active_powerups
+
+func update_active_powerups(powerup, time):
+	if (active_powerups.has(powerup)):
+		active_powerups[powerup] += time / 2
+	else:
+		active_powerups[powerup] = time
+
+func get_active_powerups():
+	return active_powerups
 
 func _ready():
 	load_high_score()
@@ -14,13 +23,12 @@ func _ready():
 	set_process(true)
 	
 func _process(delta):
-	for power_up in power_up_time_left_dict.keys():
-		var time_left = power_up_time_left_dict[power_up] - delta
+	for power_up in active_powerups.keys():
+		var time_left = active_powerups[power_up] - delta
 		if (time_left < 0):
-			power_up_time_left_dict.erase(power_up)
-			print("Power-up: %s was deactivated." % power_up)
+			active_powerups.erase(power_up)
 		else:
-			power_up_time_left_dict[power_up] = time_left
+			active_powerups[power_up] = time_left
 
 func update_high_score_label():
 	get_node("HighScore").set_text("High Score: " + str(high_score))
