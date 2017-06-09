@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="PackedScene" subresource_count="4" version="2.1" version_name="Godot Engine v2.1.3.stable.official">
+<resource_file type="PackedScene" subresource_count="4" version="2.1" version_name="Godot Engine v2.1.3.stable.custom_build">
 	<ext_resource path="res://scripts/ball.gd" type="Script" index="0"></ext_resource>
 	<ext_resource path="res://textures/ball.png" type="Texture" index="1"></ext_resource>
 	<resource type="RectangleShape2D" path="local://2">
@@ -17,7 +17,7 @@
 			<array  len="0" shared="false">
 			</array>
 			<string> "names" </string>
-			<string_array  len="35">
+			<string_array  len="36">
 				<string> "Ball" </string>
 				<string> "transform/scale" </string>
 				<string> "input/pickable" </string>
@@ -43,6 +43,7 @@
 				<string> "damp_override/angular" </string>
 				<string> "script/script" </string>
 				<string> "points_on_hit" </string>
+				<string> "points_for_winner" </string>
 				<string> "speedup" </string>
 				<string> "max_speed" </string>
 				<string> "RigidBody2D" </string>
@@ -60,9 +61,9 @@
 			<array  len="0" shared="false">
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="85"> 				-1, -1, 27, 0, -1, 26, 1, 0, 2, 1, 3, 2, 4, 3, 5, 1, 6, 4, 7, 4, 8, 5, 9, 6, 10, 7, 11, 6, 12, 7, 13, 1, 14, 8, 15, 9, 16, 10, 17, 1, 18, 10, 19, 11, 20, 7, 21, 7, 22, 7, 23, 12, 24, 13, 25, 14, 26, 15, 0, 0, 0, 28, 28, -1, 2, 1, 0, 29, 16, 0, 0, 0, 34, 30, -1, 4, 1, 0, 31, 2, 32, 1, 33, 8, 0 </int_array>
+			<int_array  len="87"> 				-1, -1, 28, 0, -1, 27, 1, 0, 2, 1, 3, 2, 4, 3, 5, 1, 6, 4, 7, 4, 8, 5, 9, 6, 10, 7, 11, 6, 12, 7, 13, 1, 14, 8, 15, 9, 16, 10, 17, 1, 18, 10, 19, 11, 20, 7, 21, 7, 22, 7, 23, 12, 24, 13, 25, 14, 26, 15, 27, 16, 0, 0, 0, 29, 29, -1, 2, 1, 0, 30, 17, 0, 0, 0, 35, 31, -1, 4, 1, 0, 32, 2, 33, 1, 34, 8, 0 </int_array>
 			<string> "variants" </string>
-			<array  len="17" shared="false">
+			<array  len="18" shared="false">
 				<vector2> 0.5, 0.5 </vector2>
 				<bool> False </bool>
 				<resource  resource_type="Shape2D" path="local://2">  </resource>
@@ -77,6 +78,7 @@
 				<vector2> 0, -400 </vector2>
 				<resource  external="0">  </resource>
 				<int> 250 </int>
+				<int> 500 </int>
 				<int> 5 </int>
 				<int> 1500 </int>
 				<resource  external="1">  </resource>

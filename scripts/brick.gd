@@ -2,12 +2,12 @@ extends StaticBody2D
 
 const powerup_scenes = {
 	"TeleControl": preload("res://scenes/tele_control_powerup.xml"),
-	"ExpandTab": preload("res://scenes/expand_tab_powerup.xml")
+	"ExpandTab": preload("res://scenes/expand_pad_powerup.xml")
 }
-var powerup_spawning_probability = 0.10
+var powerup_spawning_probability = 0.20
 
 var probabilities = [0.10, 0.20] setget set_prob
-var colors = [Color(30, 120, 20), Color(30, 60, 20), Color(60, 30, 20)]
+var colors = [Color(30, 90, 20), Color(90, 30, 20), Color(30, 20, 90)]
 var life_values = [0, 1, 2]
 var life
 
@@ -44,11 +44,10 @@ func spawn_powerup():
 	var random_powerup_index = powerup_scenes.size() * randf();
 	var random_powerup_key = powerup_scenes.keys()[random_powerup_index]
 	
-	if (not get_node("/root//World").power_up_time_left_dict.has(random_powerup_key)):
-		var power_up = powerup_scenes[random_powerup_key].instance()
-		power_up.set_pos(get_pos())
-		power_up.add_to_group("PowerUps")
-		get_node("/root/World").add_child(power_up)
+	var power_up = powerup_scenes[random_powerup_key].instance()
+	power_up.set_pos(get_pos())
+	power_up.add_to_group("PowerUps")
+	get_node("/root/World").add_child(power_up)
 
 func set_prob(probs):
 	probabilities = probs

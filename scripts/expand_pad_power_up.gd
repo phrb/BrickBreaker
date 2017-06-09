@@ -1,6 +1,7 @@
 extends RigidBody2D
 
-var kind = "ExpandTab"
+var name     = "ExpandPad"
+var duration = 6
 
 func _ready():
 	set_fixed_process(true)
@@ -10,6 +11,6 @@ func _fixed_process(delta):
 	
 	for body in colliding_bodies:
 		if body.get_name() == "Paddle":
-			var world_node = get_node("/root/World")
-			world_node.power_up_time_left_dict[kind] = 10
+			get_node("/root/World").update_active_powerups(name, duration)
+			body.expand_pad()
 			queue_free()

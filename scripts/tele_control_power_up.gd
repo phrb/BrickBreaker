@@ -1,6 +1,7 @@
 extends RigidBody2D
 
-var kind = "TeleControl"
+var name     = "TeleControl"
+var duration = 10
 
 func _ready():
 	set_fixed_process(true)
@@ -10,6 +11,6 @@ func _fixed_process(delta):
 	
 	for body in colliding_bodies:
 		if body.get_name() == "Paddle":
-			var world_node = get_node("/root/World")
-			world_node.power_up_time_left_dict[kind] = 10
+			get_node("/root/World").update_active_powerups(name, duration)
+			get_node("/root/Ball").increase_telecontrol_acceleration()
 			queue_free()
