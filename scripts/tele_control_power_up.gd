@@ -12,5 +12,7 @@ func _fixed_process(delta):
 	for body in colliding_bodies:
 		if body.get_name() == "Paddle":
 			get_node("/root/World").update_active_powerups(name, duration)
-			get_node("/root/Ball").increase_telecontrol_acceleration()
+			var ball_node = get_node("/root/Ball")
+			if ball_node != null:
+				ball_node.increase_telecontrol_acceleration()
 			queue_free()

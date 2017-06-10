@@ -19,13 +19,23 @@ func _ready():
 func increase_telecontrol_acceleration():
 	telecontrol_acceleration_x = min(telecontrol_acceleration_x + telecontrol_speedup_x, max_telecontrol_acceleration_x)
 
+func trigger_game_over():
+	var world_node = get_node("/root/World")
+	world_node.update_high_score()
+	var game_over_node = game_over_scene.instance()
+	get_node("..").add_child(game_over_node)	
+
+func free_ball():
+	var world_node = get_node("/root/World")
+	world_node.ball_counter = world_node.ball_counter - 1
+	queue_free()
+	
+	if (world_node.ball_counter == 0):
+		trigger_game_over()
+
 func _fixed_process(delta):
 	if get_pos().y > get_viewport_rect().end.y:
-		get_node("/root/World").update_high_score()
-		queue_free()
-		
-		var game_over_node = game_over_scene.instance()
-		get_node("..").add_child(game_over_node)
+		free_ball()
 	
 	var colliding_bodies = get_colliding_bodies()
 	
