@@ -5,6 +5,7 @@ var high_score = 0
 var high_score_path = "user://high_score.save"
 var data = {"high_score": 0}
 var save_game = File.new()
+var ball_counter = 0
 
 var active_powerups = {} setget update_active_powerups, get_active_powerups
 
