@@ -4,6 +4,7 @@ export var points_on_hit     = 250
 export var points_for_winner = 500
 export var speedup           = 5
 export var max_speed         = 2000
+export var min_abs_tangent   = 0.2
 
 var telecontrol_speedup_x          = 25
 var telecontrol_acceleration_x     = 40 setget increase_telecontrol_acceleration
@@ -55,6 +56,12 @@ func _fixed_process(delta):
 		elif body.get_name() == "Paddle":
 			var speed     = get_linear_velocity().length()
 			var direction = get_pos() - body.get_node("Kickback").get_global_pos()
+			var tangent_val = direction.y / direction.x
+			var abs_tangent = abs(tangent_val)
+			if (abs_tangent < min_abs_tangent):
+				var tangent_sign = tangent_val / abs_tangent
+				var new_tangent = min_abs_tangent * tangent_sign
+				direction.y = direction.x * new_tangent
 			var velocity  = direction.normalized() * min(speed + speedup, max_speed)
 			set_linear_velocity(velocity)
 
