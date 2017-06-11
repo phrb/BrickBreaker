@@ -32,6 +32,10 @@ func update_active_powerups(powerup, time):
 func get_active_powerups():
 	return active_powerups
 
+func remove_balls():
+	for ball_node in get_tree().get_nodes_in_group("Balls"):
+		ball_node.free()
+
 func _ready():
 	load_save()
 	update_saved_labels()
@@ -53,7 +57,7 @@ func save():
 	if score > high_score:
 		data["high_score"] = score
 
-	if score > high_score:
+	if combo_length > max_combo:
 		data["max_combo"] = combo_length
 		
 	save_game.open(save_path, File.WRITE)

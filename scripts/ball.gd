@@ -48,13 +48,12 @@ func _fixed_process(delta):
 			if get_node("/root/World").get_combo() % 5 == 0:
 				get_node("/root/World/Background").scale_rotation_by(2)
 			
-			if get_tree().get_nodes_in_group("Bricks").size() == 1:
+			if get_tree().get_nodes_in_group("Bricks").size() == 1 && body.life == -1:
 				get_node("/root/World").set_score(get_node("/root/World").get_score() + points_for_winner)
 				get_node("/root/World").update_saved_labels()
-				queue_free()
-				
 				var winner_node = winner_scene.instance()
 				get_node("..").add_child(winner_node)
+				queue_free()
 
 		elif body.get_name() == "Paddle":
 			var speed     = get_linear_velocity().length()

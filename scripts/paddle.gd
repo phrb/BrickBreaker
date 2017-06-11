@@ -66,6 +66,7 @@ func spawn_balls(num_balls):
 		var ball = ball_scene.instance()
 		ball.set_pos(get_pos() - directions[i])
 		ball.set_linear_velocity(velocities[i])
+		ball.add_to_group("Balls")
 		get_tree().get_root().add_child(ball)
 		
 

@@ -14,7 +14,8 @@ func _ready():
 
 func replay_game():
 	queue_free()
-	get_tree().reload_current_scene()
+	get_node("/root/World").remove_balls()
+	get_tree().change_scene("res://scenes/level1.xml")
 
 func go_to_menu():
 	print("You should start menu scene here")
