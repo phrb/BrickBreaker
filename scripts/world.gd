@@ -2,10 +2,13 @@ extends Node2D
 
 var max_combo = 0
 var combo_length = 0 setget set_combo, get_combo
+
 var score = 0 setget set_score, get_score
 var high_score = 0
+
 var save_path = "user://brickbreaker.save"
 var data = {"high_score": 0, "max_combo": 0}
+
 var save_game = File.new()
 var ball_counter = 0
 

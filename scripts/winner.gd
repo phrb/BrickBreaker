@@ -6,6 +6,7 @@ func _ready():
 	var your_score = get_node("/root/World").score
 	if your_score < high_score:
 		get_node("high_score_msg").hide()
+	
 	get_node("high_score").set_text(str(high_score))
 	get_node("your_score").set_text(str(your_score))
 	
