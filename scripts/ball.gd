@@ -21,9 +21,9 @@ func increase_telecontrol_acceleration():
 
 func trigger_game_over():
 	var world_node = get_node("/root/World")
-	world_node.update_high_score()
+	world_node.save()
 	var game_over_node = game_over_scene.instance()
-	get_node("..").add_child(game_over_node)	
+	get_node("..").add_child(game_over_node)
 
 func free_ball():
 	var world_node = get_node("/root/World")
@@ -41,22 +41,29 @@ func _fixed_process(delta):
 	
 	for body in colliding_bodies:
 		if body.is_in_group("Bricks"):
-			get_node("/root/World").score += points_on_hit
+			get_node("/root/World").set_score(get_node("/root/World").get_score() + points_on_hit)
 			body.hit_brick()
+			get_node("/root/World").set_combo(get_node("/root/World").get_combo() + 1)
 			
-			if get_tree().get_nodes_in_group("Bricks").size() == 1:
-				get_node("/root/World").score += points_for_winner
-				get_node("/root/World").update_high_score()
-				queue_free()
-				
+			if get_node("/root/World").get_combo() % 5 == 0:
+				get_node("/root/World/Background").scale_rotation_by(2)
+			
+			if get_tree().get_nodes_in_group("Bricks").size() == 1 && body.life == -1:
+				get_node("/root/World").set_score(get_node("/root/World").get_score() + points_for_winner)
+				get_node("/root/World").update_saved_labels()
 				var winner_node = winner_scene.instance()
 				get_node("..").add_child(winner_node)
+				queue_free()
 
 		elif body.get_name() == "Paddle":
 			var speed     = get_linear_velocity().length()
 			var direction = get_pos() - body.get_node("Kickback").get_global_pos()
 			var velocity  = direction.normalized() * min(speed + speedup, max_speed)
 			set_linear_velocity(velocity)
+			
+			get_node("/root/World").update_max_combo()
+			get_node("/root/World").set_combo(0)
+			get_node("/root/World/Background").reset_rotation()
 
 	if get_node("/root/World").get_active_powerups().has("TeleControl"):
 		var old_velocity = get_linear_velocity()

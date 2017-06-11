@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="PackedScene" subresource_count="9" version="2.1" version_name="Godot Engine v2.1.3.stable.official">
-	<ext_resource path="res://scripts/paddle.gd" type="Script" index="1"></ext_resource>
+<resource_file type="PackedScene" subresource_count="12" version="2.1" version_name="Godot Engine v2.1.3.stable.custom_build">
+	<ext_resource path="res://scripts/paddle.gd" type="Script" index="4"></ext_resource>
+	<ext_resource path="res://scripts/bricks.gd" type="Script" index="6"></ext_resource>
+	<ext_resource path="res://fonts/ka1.fnt" type="BitmapFont" index="3"></ext_resource>
 	<ext_resource path="res://scripts/world.gd" type="Script" index="0"></ext_resource>
-	<ext_resource path="res://scripts/bricks.gd" type="Script" index="3"></ext_resource>
-	<ext_resource path="res://textures/blue.png" type="Texture" index="2"></ext_resource>
+	<ext_resource path="res://scripts/background.gd" type="Script" index="2"></ext_resource>
+	<ext_resource path="res://textures/blue.png" type="Texture" index="5"></ext_resource>
+	<ext_resource path="res://textures/background.png" type="Texture" index="1"></ext_resource>
 	<resource type="CapsuleShape2D" path="local://1">
 		<real name="custom_solver_bias"> 0 </real>
 		<real name="radius"> 32 </real>
@@ -35,10 +38,16 @@
 			<array  len="0" shared="false">
 			</array>
 			<string> "names" </string>
-			<string_array  len="57">
+			<string_array  len="62">
 				<string> "World" </string>
 				<string> "script/script" </string>
 				<string> "Node2D" </string>
+				<string> "Background" </string>
+				<string> "transform/pos" </string>
+				<string> "transform/scale" </string>
+				<string> "texture" </string>
+				<string> "modulate" </string>
+				<string> "Sprite" </string>
 				<string> "HighScore" </string>
 				<string> "rect/scale" </string>
 				<string> "focus/ignore_mouse" </string>
@@ -49,15 +58,16 @@
 				<string> "margin/top" </string>
 				<string> "margin/right" </string>
 				<string> "margin/bottom" </string>
+				<string> "custom_fonts/font" </string>
 				<string> "text" </string>
 				<string> "percent_visible" </string>
 				<string> "lines_skipped" </string>
 				<string> "max_lines_visible" </string>
 				<string> "Label" </string>
+				<string> "MaxCombo" </string>
 				<string> "Score" </string>
+				<string> "Combo" </string>
 				<string> "Paddle" </string>
-				<string> "transform/pos" </string>
-				<string> "transform/scale" </string>
 				<string> "input/pickable" </string>
 				<string> "shapes/0/shape" </string>
 				<string> "shapes/0/transform" </string>
@@ -66,8 +76,6 @@
 				<string> "collision/mask" </string>
 				<string> "collision/margin" </string>
 				<string> "KinematicBody2D" </string>
-				<string> "Sprite" </string>
-				<string> "texture" </string>
 				<string> "Collision" </string>
 				<string> "transform/rot" </string>
 				<string> "shape" </string>
@@ -95,29 +103,42 @@
 				<string> "Bricks" </string>
 			</string_array>
 			<string> "node_count" </string>
-			<int> 10 </int>
+			<int> 13 </int>
 			<string> "node_paths" </string>
 			<array  len="0" shared="false">
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="202"> 				-1, -1, 2, 0, -1, 1, 1, 0, 0, 0, 0, 17, 3, -1, 13, 4, 1, 5, 2, 6, 2, 7, 3, 8, 4, 9, 5, 10, 6, 11, 7, 12, 8, 13, 9, 14, 10, 15, 4, 16, 11, 0, 0, 0, 17, 18, -1, 13, 4, 1, 5, 2, 6, 2, 7, 3, 8, 4, 9, 12, 10, 6, 11, 13, 12, 8, 13, 14, 14, 10, 15, 4, 16, 11, 0, 0, 0, 29, 19, -1, 10, 20, 15, 21, 16, 22, 17, 23, 18, 24, 19, 25, 17, 26, 20, 27, 20, 28, 21, 1, 22, 0, 3, 0, 30, 30, -1, 1, 31, 23, 0, 3, 0, 37, 32, -1, 4, 33, 24, 34, 18, 35, 17, 36, 4, 0, 3, 0, 39, 38, -1, 1, 20, 25, 0, 0, 0, 51, 40, -1, 17, 20, 26, 22, 17, 23, 27, 24, 28, 25, 17, 41, 29, 42, 28, 43, 17, 44, 30, 45, 28, 46, 17, 26, 31, 27, 31, 47, 32, 48, 33, 49, 10, 50, 33, 0, 7, 0, 55, 32, -1, 5, 20, 34, 52, 4, 53, 35, 54, 36, 35, 17, 0, 0, 0, 2, 56, -1, 1, 1, 37, 0 </int_array>
+			<int_array  len="293"> 				-1, -1, 2, 0, -1, 1, 1, 0, 0, 0, 0, 8, 3, -1, 5, 4, 1, 5, 2, 6, 3, 7, 4, 1, 5, 0, 0, 0, 24, 9, -1, 14, 10, 6, 11, 7, 12, 7, 13, 8, 14, 9, 15, 10, 16, 11, 17, 12, 18, 13, 19, 14, 20, 15, 21, 16, 22, 9, 23, 17, 0, 0, 0, 24, 25, -1, 14, 10, 6, 11, 7, 12, 7, 13, 8, 14, 9, 15, 10, 16, 18, 17, 19, 18, 20, 19, 14, 20, 21, 21, 16, 22, 9, 23, 17, 0, 0, 0, 24, 26, -1, 14, 10, 6, 11, 7, 12, 7, 13, 8, 14, 9, 15, 22, 16, 11, 17, 23, 18, 24, 19, 14, 20, 25, 21, 16, 22, 9, 23, 17, 0, 0, 0, 24, 27, -1, 14, 10, 6, 11, 7, 12, 7, 13, 8, 14, 9, 15, 22, 16, 18, 17, 23, 18, 26, 19, 14, 20, 27, 21, 16, 22, 9, 23, 17, 0, 0, 0, 36, 28, -1, 10, 4, 28, 5, 29, 29, 30, 30, 31, 31, 32, 32, 30, 33, 33, 34, 33, 35, 34, 1, 35, 0, 6, 0, 8, 8, -1, 1, 6, 36, 0, 6, 0, 42, 37, -1, 4, 38, 37, 39, 31, 40, 30, 41, 9, 0, 6, 0, 44, 43, -1, 1, 4, 38, 0, 0, 0, 56, 45, -1, 17, 4, 39, 29, 30, 30, 40, 31, 41, 32, 30, 46, 42, 47, 41, 48, 30, 49, 43, 50, 41, 51, 30, 33, 44, 34, 44, 52, 45, 53, 46, 54, 16, 55, 46, 0, 10, 0, 60, 37, -1, 5, 4, 47, 57, 9, 58, 48, 59, 49, 40, 30, 0, 0, 0, 2, 61, -1, 1, 1, 50, 0 </int_array>
 			<string> "variants" </string>
-			<array  len="38" shared="false">
+			<array  len="51" shared="false">
 				<resource  external="0">  </resource>
+				<vector2> 480, 480 </vector2>
+				<vector2> 1.8, 1.8 </vector2>
+				<resource  external="1">  </resource>
+				<color> 0.503906, 0.503906, 0.503906, 1 </color>
+				<resource  external="2">  </resource>
 				<vector2> 1.2, 1.2 </vector2>
 				<bool> True </bool>
 				<int> 2 </int>
 				<int> 0 </int>
-				<real> 720 </real>
+				<real> 576 </real>
 				<real> 64 </real>
-				<real> 840 </real>
-				<real> 78 </real>
+				<real> 868 </real>
+				<real> 95 </real>
+				<resource  external="3">  </resource>
 				<string> "High Score: 0" </string>
 				<real> 1 </real>
 				<int> -1 </int>
+				<real> 96 </real>
+				<real> 855 </real>
+				<real> 127 </real>
+				<string> "Max Combo: 0" </string>
 				<real> 32 </real>
 				<real> 128 </real>
+				<real> 78 </real>
 				<string> "Score: 0" </string>
+				<real> 110 </real>
+				<string> "Combo: 0" </string>
 				<vector2> 480.435, 1060 </vector2>
 				<vector2> 0.3, 0.3 </vector2>
 				<bool> False </bool>
@@ -125,8 +146,8 @@
 				<matrix32> -4.37114e-08, -1, 1, -4.37114e-08, 0, 0 </matrix32>
 				<int> 7 </int>
 				<real> 0.08 </real>
-				<resource  external="1">  </resource>
-				<resource  external="2">  </resource>
+				<resource  external="4">  </resource>
+				<resource  external="5">  </resource>
 				<real> 90 </real>
 				<vector2> 0, 64 </vector2>
 				<vector2> 0, 32 </vector2>
@@ -140,7 +161,7 @@
 				<vector2> 0, -32 </vector2>
 				<vector2_array  len="8"> 					0, 1088, -96, 1088, -96, -96, 1024, -96, 1024, 1088, 928, 1088, 928, 0, 0, 0 </vector2_array>
 				<vector2> 0, 2 </vector2>
-				<resource  external="3">  </resource>
+				<resource  external="6">  </resource>
 			</array>
 			<string> "version" </string>
 			<int> 2 </int>

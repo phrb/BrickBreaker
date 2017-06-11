@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="PackedScene" subresource_count="12" version="2.1" version_name="Godot Engine v2.1.3.stable.official">
+<resource_file type="PackedScene" subresource_count="12" version="2.1" version_name="Godot Engine v2.1.3.stable.custom_build">
 	<ext_resource path="res://textures/high_score_label.png" type="Texture" index="4"></ext_resource>
 	<ext_resource path="res://textures/your_score_label.png" type="Texture" index="3"></ext_resource>
-	<ext_resource path="res://textures/menu_clicked.png" type="Texture" index="6"></ext_resource>
 	<ext_resource path="res://textures/play_hover.png" type="Texture" index="10"></ext_resource>
-	<ext_resource path="res://textures/play_unpressed.png" type="Texture" index="8"></ext_resource>
+	<ext_resource path="res://textures/menu_clicked.png" type="Texture" index="6"></ext_resource>
 	<ext_resource path="res://fonts/font.fnt" type="BitmapFont" index="2"></ext_resource>
+	<ext_resource path="res://textures/play_unpressed.png" type="Texture" index="8"></ext_resource>
 	<ext_resource path="res://textures/menu_hover.png" type="Texture" index="7"></ext_resource>
 	<ext_resource path="res://textures/play_clicked.png" type="Texture" index="9"></ext_resource>
 	<ext_resource path="res://textures/menu_unpressed.png" type="Texture" index="5"></ext_resource>
