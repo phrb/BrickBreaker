@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 var name     = "ExpandPad"
-var duration = 6
+var duration = 10
 
 func _ready():
 	set_fixed_process(true)

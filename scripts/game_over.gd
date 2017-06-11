@@ -1,8 +1,6 @@
 extends Node2D
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+const menu_scene = preload("res://scenes/menu.xml")
 
 func _ready():
 	get_node("../World/Paddle").game_over = true
@@ -18,4 +16,17 @@ func replay_game():
 	get_tree().change_scene("res://scenes/level1.xml")
 
 func go_to_menu():
-	print("You should start menu scene here")
+	var world_node = get_node("/root/World")
+	
+	world_node.get_node("HighScore").hide()
+	world_node.get_node("Score").hide()
+	world_node.get_node("Combo").hide()
+	world_node.get_node("MaxCombo").hide()
+	
+	world_node.remove_balls()
+	world_node.remove_bricks()
+	world_node.remove_paddle()
+	
+	var menu_node = menu_scene.instance()
+	get_node("..").add_child(menu_node)
+	queue_free()

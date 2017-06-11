@@ -22,6 +22,10 @@ func increase_telecontrol_acceleration():
 func trigger_game_over():
 	var world_node = get_node("/root/World")
 	world_node.save()
+	
+	world_node.get_node("HighScore").hide()
+	world_node.get_node("Score").hide()
+	
 	var game_over_node = game_over_scene.instance()
 	get_node("..").add_child(game_over_node)
 
@@ -51,6 +55,11 @@ func _fixed_process(delta):
 			if get_tree().get_nodes_in_group("Bricks").size() == 1 && body.life == -1:
 				get_node("/root/World").set_score(get_node("/root/World").get_score() + points_for_winner)
 				get_node("/root/World").update_saved_labels()
+				
+				var world_node = get_node("/root/World")
+				world_node.save()
+				world_node.get_node("HighScore").hide()
+				world_node.get_node("Score").hide()
 				var winner_node = winner_scene.instance()
 				get_node("..").add_child(winner_node)
 				queue_free()
