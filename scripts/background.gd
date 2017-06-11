@@ -1,9 +1,9 @@
 extends Sprite
 
-var rotation_factor = 512 setget scale_rotation_by
+var rotation_factor = 128 setget scale_rotation_by
 var min_rotation_factor = 0.5
 
-var color_factor    = 0.2 setget scale_color_by
+var color_factor = 0.2 setget scale_color_by
 
 func reset_rotation():
 	rotation_factor = 512

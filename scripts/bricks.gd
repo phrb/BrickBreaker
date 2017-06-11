@@ -48,15 +48,7 @@ var hard_level = { 'fringe_1': 0.12,
                    'brick_ps': [0.4, 0.8] }
 
 var levels = [easy_level, medium_level, hard_level]
-var level = randi() % levels.size()
-
-var probabilities = [[fringe_1_start, fringe_1_start + fringe_size, levels[level]['fringe_1']],
-                     [shell_1_start,  shell_1_start + shell_size,   levels[level]['shell_1']],
-                     [body_1_start,   body_1_start + body_size,     levels[level]['body_1']],
-                     [core_start,     core_start + core_size,       levels[level]['core']],
-                     [body_2_start,   body_2_start + body_size,     levels[level]['body_2']],
-                     [shell_2_start,  shell_2_start + shell_size,   levels[level]['shell_2']],
-                     [fringe_2_start, brick_matrix_x - 1,           levels[level]['fringe_2']]]
+var probabilities
 
 var starting_x = 76
 var starting_y = 128
@@ -67,7 +59,15 @@ var brick_matrix = []
 
 var child_pos  = Vector2(starting_x, starting_y)
 
+
 func _ready():
+	probabilities = [[fringe_1_start, fringe_1_start + fringe_size, levels[global.level]['fringe_1']],
+                     [shell_1_start,  shell_1_start + shell_size,   levels[global.level]['shell_1']],
+                     [body_1_start,   body_1_start + body_size,     levels[global.level]['body_1']],
+                     [core_start,     core_start + core_size,       levels[global.level]['core']],
+                     [body_2_start,   body_2_start + body_size,     levels[global.level]['body_2']],
+                     [shell_2_start,  shell_2_start + shell_size,   levels[global.level]['shell_2']],
+                     [fringe_2_start, brick_matrix_x - 1,           levels[global.level]['fringe_2']]]
 	randomize()
 	var die = randf()
 	
@@ -86,7 +86,7 @@ func _ready():
 				brick_matrix[x][y] = 1
 				
 				var simple_brick_node = simple_brick_scene.instance()
-				simple_brick_node.set_prob(levels[level]['brick_ps'])
+				simple_brick_node.set_prob(levels[global.level]['brick_ps'])
 				simple_brick_node.set_pos(child_pos)
 				simple_brick_node.add_to_group("Bricks")
 				
