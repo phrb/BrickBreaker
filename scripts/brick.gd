@@ -5,14 +5,29 @@ const powerup_scenes = {
 	"ExpandTab": preload("res://scenes/expand_pad_powerup.xml"),
 	"MultiBall": preload("res://scenes/multiball_powerup.xml")
 }
-var powerup_spawning_probability = 0.10
+
+var powerup_spawning_probability = 0.20
 
 var probabilities = [0.10, 0.20] setget set_prob
-var colors = [Color(30, 90, 20), Color(90, 30, 20), Color(30, 20, 90)]
 var life_values = [0, 1, 2]
+
 var life
+var texture
 
 var has_powerup = false
+
+var textures = [[preload("res://textures/brick1_1.png"),
+				preload("res://textures/brick2_1.png"),
+				preload("res://textures/brick3_1.png"),
+				preload("res://textures/brick4_1.png")],
+				[preload("res://textures/brick1_2.png"),
+				preload("res://textures/brick2_2.png"),
+				preload("res://textures/brick3_2.png"),
+				preload("res://textures/brick4_2.png")],
+				[preload("res://textures/brick1_3.png"),
+				preload("res://textures/brick2_3.png"),
+				preload("res://textures/brick3_3.png"),
+				preload("res://textures/brick4_3.png")]]
 
 func _ready():
 	randomize()
@@ -28,18 +43,21 @@ func _ready():
 		life_value = 2
 	elif (p < probabilities[1]):
 		life_value = 1
-		
+	
 	life = life_values[life_value]
-	get_node("Sprite").set_modulate(colors[life_value])
+	
+	texture = randi() % textures[life].size()
+	get_node("Sprite").set_texture(textures[life][texture])
 
 func hit_brick():
 	life -= 1
+	
 	if life == -1:
 		if has_powerup:
 			spawn_powerup()
 		queue_free()
 	else:
-		get_node("Sprite").set_modulate(colors[life])
+		get_node("Sprite").set_texture(textures[life][texture])
 
 func spawn_powerup():
 	var random_powerup_index = powerup_scenes.size() * randf();

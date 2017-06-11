@@ -35,17 +35,41 @@ func expand_pad():
 		scale_x_by(1)
 
 func spawn_balls(num_balls):
+	if (num_balls <= 0):
+		return
+
+	ball_presence = true
+	var world_node = get_parent()
+	var directions = []
+	var velocities = []
+	
+	if (world_node.ball_counter > 0):
+		directions = [Vector2(32, 32),
+		              Vector2(-32, 32),
+		              Vector2(-64, 32),
+		              Vector2(64, 32)]
+		
+		velocities = [Vector2(-200, -250),
+		              Vector2(200, -250),
+		              Vector2(-300, -200),
+		              Vector2(300, -200)]
+	else:
+		directions = [Vector2(0, 32),
+		              Vector2(32, 32),
+		              Vector2(-32, 32)]
+		
+		velocities = [Vector2(0, -400),
+		              Vector2(200, -200),
+		              Vector2(-200, -200)]
+	
 	for i in range(num_balls):
 		var ball = ball_scene.instance()
-		ball.set_pos(get_pos() - Vector2(0, 32))
+		ball.set_pos(get_pos() - directions[i])
+		ball.set_linear_velocity(velocities[i])
 		get_tree().get_root().add_child(ball)
 		
-	var world_node = get_parent()
-	var old_ball_count = world_node.ball_counter
-	world_node.ball_counter = old_ball_count + num_balls
-	
-	if (num_balls > 0):
-		ball_presence = true
+
+	world_node.ball_counter += num_balls
 
 func _input(event):
 	if !ball_presence and (event.type == InputEvent.MOUSE_BUTTON and event.is_pressed()):
