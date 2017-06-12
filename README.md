@@ -36,6 +36,12 @@ time you play you will get a different level:
   - Randomized power-up placement
   - Randomized brick strength and density, depending on probabilities for each layer.
 
+### Run
+
+We've included a pre-built Android APK if you want to test it without building,
+but we recomend you build the game on your own machine. The APK is in the
+`build` directory.
+
 ### Build
 
 To build the game you need to install Godot. You should download the
