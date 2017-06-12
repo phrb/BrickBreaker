@@ -3,10 +3,11 @@ extends StaticBody2D
 const powerup_scenes = {
 	"TeleControl": preload("res://scenes/tele_control_powerup.xml"),
 	"ExpandTab": preload("res://scenes/expand_pad_powerup.xml"),
+	"ReduceTab": preload("res://scenes/reduce_pad_powerup.xml"),
 	"MultiBall": preload("res://scenes/multiball_powerup.xml")
 }
 
-var powerup_spawning_probability = 0.15
+var powerup_spawning_probability = 0.20
 
 var probabilities = [0.10, 0.20] setget set_prob
 var life_values = [0, 1, 2]
