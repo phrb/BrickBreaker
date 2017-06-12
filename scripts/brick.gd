@@ -7,7 +7,7 @@ const powerup_scenes = {
 	"MultiBall": preload("res://scenes/multiball_powerup.xml")
 }
 
-var powerup_spawning_probability = 0.20
+var powerup_spawning_probability = 0.15
 
 var probabilities = [0.10, 0.20] setget set_prob
 var life_values = [0, 1, 2]

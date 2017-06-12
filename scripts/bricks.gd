@@ -6,19 +6,19 @@ var brick_matrix_x = 30
 var brick_matrix_y = 11
 
 var fringe_1_start = 0
-var fringe_2_start = 20
-var fringe_size    = 5
+var fringe_2_start = 35
+var fringe_size    = 10
 
-var shell_1_start = 6
-var shell_2_start = 18
-var shell_size    = 1
+var shell_1_start = 11
+var shell_2_start = 33
+var shell_size    = 3
 
-var body_1_start = 8
-var body_2_start = 14
-var body_size    = 3
+var body_1_start = 15
+var body_2_start = 26
+var body_size    = 6
 
-var core_start = 12
-var core_size  = 1
+var core_start = 22
+var core_size  = 3
 
 var easy_level = { 'fringe_1': 0.0,
                    'shell_1':  0.1,
