@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-var name     = "ExpandPad"
+var name     = "ReducePad"
 var duration = 10
 
 func _ready():
@@ -13,5 +13,5 @@ func _fixed_process(delta):
 		if body.get_name() == "Paddle":
 			
 			get_node("/root/World").update_active_powerups(name, duration)
-			body.expand_pad()
+			body.reduce_pad()
 			queue_free()
