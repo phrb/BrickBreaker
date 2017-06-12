@@ -4,6 +4,7 @@ const ball_scene = preload("res://scenes/ball.xml")
 
 var default_scale = Vector2(0.3, 0.3)
 var max_scale     = Vector2(1.8, 0.3)
+var min_scale     = Vector2(0.01, 0.3)
 
 var ball_presence = false
 var game_over = false
@@ -16,7 +17,8 @@ func reset_scale():
 	set_scale(default_scale)
 	
 func scale_x_by(factor):
-	if (get_scale().x + (factor * default_scale.x) <= max_scale.x):
+	var new_x = get_scale().x + (factor * default_scale.x)
+	if (new_x <= max_scale.x and new_x >= min_scale.x):
 		var new_scale = Vector2(get_scale().x + (default_scale.x * factor), default_scale.y)
 		set_scale(new_scale)
 
@@ -27,12 +29,18 @@ func _fixed_process(delta):
 	
 	set_pos(Vector2(mouse_x, y))
 	
-	if (!get_parent().get_active_powerups().has("ExpandPad")):
+	var has_expand = get_parent().get_active_powerups().has("ExpandPad")
+	var has_reduce = get_parent().get_active_powerups().has("ReducePad")
+	if (!has_expand and !has_reduce):
 		reset_scale()
 
 func expand_pad():
 	if (get_parent().get_active_powerups().has("ExpandPad")):
 		scale_x_by(1)
+
+func reduce_pad():
+	if (get_parent().get_active_powerups().has("ReducePad")):
+		scale_x_by(-0.3)
 
 func spawn_balls(num_balls):
 	if (num_balls <= 0):
