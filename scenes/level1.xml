@@ -146,7 +146,7 @@
 				<real> 184 </real>
 				<real> 154 </real>
 				<string> "Combo: 0" </string>
-				<vector2> 544.435, 1723 </vector2>
+				<vector2> 554.435, 1724 </vector2>
 				<vector2> 0.3, 0.3 </vector2>
 				<bool> False </bool>
 				<resource  resource_type="Shape2D" path="local://1">  </resource>
