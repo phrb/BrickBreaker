@@ -51,7 +51,7 @@ var levels = [easy_level, medium_level, hard_level]
 var probabilities
 
 var starting_x = 93
-var starting_y = 128
+var starting_y = 200
 var step_x     = 87
 var step_y     = 48
 

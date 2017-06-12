@@ -31,6 +31,7 @@ func _fixed_process(delta):
 	
 	var has_expand = get_parent().get_active_powerups().has("ExpandPad")
 	var has_reduce = get_parent().get_active_powerups().has("ReducePad")
+	
 	if (!has_expand and !has_reduce):
 		reset_scale()
 
@@ -40,7 +41,7 @@ func expand_pad():
 
 func reduce_pad():
 	if (get_parent().get_active_powerups().has("ReducePad")):
-		scale_x_by(-0.3)
+		scale_x_by(-0.5)
 
 func spawn_balls(num_balls):
 	if (num_balls <= 0):
