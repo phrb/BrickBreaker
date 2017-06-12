@@ -2,7 +2,9 @@
 
 Diamond Breaker is a game based on the classic Bricks Breaker. This game is
 built using [Godot](https://godotengine.org/), a free and open source engine
-that help us develop multi-platform games. 
+that help us develop multi-platform games.
+
+The code is hosted at [GitHub](https://github.com/phrb/BrickBreaker).
 
 The current implemented features are listed below:
 
