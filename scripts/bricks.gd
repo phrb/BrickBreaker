@@ -2,23 +2,23 @@ extends Node2D
 
 const simple_brick_scene = preload("res://scenes/brick.xml")
 
-var brick_matrix_x = 30
-var brick_matrix_y = 13
+var brick_matrix_x = 50
+var brick_matrix_y = 15
 
 var fringe_1_start = 0
-var fringe_2_start = 20
-var fringe_size    = 5
+var fringe_2_start = 35
+var fringe_size    = 10
 
-var shell_1_start = 6
-var shell_2_start = 18
-var shell_size    = 1
+var shell_1_start = 11
+var shell_2_start = 33
+var shell_size    = 3
 
-var body_1_start = 8
-var body_2_start = 14
-var body_size    = 3
+var body_1_start = 15
+var body_2_start = 26
+var body_size    = 6
 
-var core_start = 12
-var core_size  = 1
+var core_start = 22
+var core_size  = 3
 
 var easy_level = { 'fringe_1': 0.0,
                    'shell_1':  0.1,
@@ -50,8 +50,8 @@ var hard_level = { 'fringe_1': 0.12,
 var levels = [easy_level, medium_level, hard_level]
 var probabilities
 
-var starting_x = 76
-var starting_y = 128
+var starting_x = 90
+var starting_y = 256
 var step_x     = 64
 var step_y     = 28
 
